@@ -1,0 +1,14 @@
+---
+- name: Include OS-specific variables
+  include_vars: "{{ ansible_os_family }}.yml"
+
+- name: Define standard packages
+  set_fact:
+      desktop_packages: "{{ __desktop_packages | list }}"
+  when: desktop_packages is not defined
+
+- name: include os-specific setup
+  include_tasks: "setup-{{ ansible_os_family }}.yml"
+
+- name: include os-specific configuration
+  include_tasks: "configure-{{ ansible_os_family }}.yml"

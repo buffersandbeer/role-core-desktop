@@ -1,0 +1,7 @@
+---
+
+__desktop_packages:
+    - xorg
+    - lxde-core
+    - kupfer
+    - lxterminal

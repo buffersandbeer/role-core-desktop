@@ -1,0 +1,25 @@
+---
+- name: Ensure backgrounds directory exists
+  file: 
+      path: /usr/share/backgrounds
+      state: directory
+
+- name: Ensure configuration directory exists
+  file:
+      path: /etc/skel/.config/autostart
+      state: directory
+
+- name: Ensure configuration directory exists
+  file:
+      path: /root/.config/autostart
+      state: directory
+
+- name: Ensure kupfer is started by default
+  copy:
+      src: desktop
+      dest: /etc/skel/.config/autostart/.desktop
+
+- name: Ensure kupfer is started by default for root user
+  copy:
+      src: desktop
+      dest: /root/.config/autostart/.desktop
