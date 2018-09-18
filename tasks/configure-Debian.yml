@@ -14,6 +14,36 @@
       path: /root/.config/autostart
       state: directory
 
+- name: Ensure PCMAN configuration directory exists for root
+  file:
+      path: /root/.config/pcmanfm/LXDE/
+      state: directory
+
+- name: Ensure PCMAN configuration directory exists
+  file:
+      path: /etc/skel/.config/pcmanfm/LXDE/
+      state: directory
+
+- name: Ensure Openbox configuration directory exists for root
+  file:
+      path: /root/.config/openbox
+      state: directory
+
+- name: Ensure Openbox configuration directory exists
+  file:
+      path: /etc/skel/.config/openbox
+      state: directory
+
+- name: Ensure Panel configuration directory exists for root
+  file:
+      path: /root/.config/lxpanel/LXDE/panels
+      state: directory
+
+- name: Ensure Panel configuration directory exists
+  file:
+      path: /etc/skel/.config/lxpanel/LXDE/panels
+      state: directory
+
 - name: Ensure kupfer is started by default
   copy:
       src: desktop
@@ -23,3 +53,48 @@
   copy:
       src: desktop
       dest: /root/.config/autostart/.desktop
+
+- name: Copy default background
+  copy:
+      src: background.jpg
+      dest: /usr/share/backgrounds/background.jpg
+
+- name: Copy new start button
+  copy:
+      src: buffersandbeer.png
+      dest: /usr/share/lxde/images/buffersandbeer.png
+
+- name: Configure default monitor
+  copy:
+      src: desktop-items-0.conf
+      dest: /etc/skel/.config/pcmanfm/LXDE/desktop-items-0.conf
+
+- name: Configure default monitor for root
+  copy:
+      src: desktop-items-0.conf
+      dest: /root/.config/pcmanfm/LXDE/desktop-items-0.conf
+
+- name: Configure openbox defaults
+  copy:
+      src: lxde-rc.xml
+      dest: /etc/skel/.config/openbox/lxde-rc.xml
+
+- name: Configure openbox defaults for root
+  copy:
+      src: lxde-rc.xml
+      dest: /root/.config/openbox/lxde-rc.xml
+
+- name: Install Fira Code
+  copy:
+      src: firacode.ttf
+      dest: /usr/local/share/fonts/FiraCode-Regular.ttf
+
+- name: Add Panel for root
+  copy:
+      src: panel
+      dest: /root/.config/lxpanel/LXDE/panels
+
+- name: Add panels for all users
+  copy:
+      src: panel
+      dest: /etc/skel/.config/lxpanel/LXDE/panels

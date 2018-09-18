@@ -5,3 +5,4 @@ __desktop_packages:
     - lxde-core
     - kupfer
     - lxterminal
+    - xrdp
